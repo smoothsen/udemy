@@ -1,68 +1,36 @@
-let options = {
-    width: 1024,
-    height: 1024,
-    name: "test"
-};
+let box = document.getElementById("box"),
+    btn = document.getElementsByTagName("button"),
+    circle = document.getElementsByClassName("circle"),
+    heart = document.querySelectorAll(".heart"),
+    oneHeart = document.querySelector(".heart"),
+    wrapper = document.querySelector(".wrapper");
 
-console.log(options.name);
-options.bool = false;
-options.colors = {
-    border: "black",
-    bg: "red"
-};
+box.style.backgroundColor = "blue";
+btn[1].style.borderRadius = "100%";
 
-delete options.bool;
+circle[0].style.backgroundColor = "red";
+circle[1].style.backgroundColor = "yellow";
+circle[2].style.backgroundColor = "green";
 
-console.log(options);
+// for(let i = 0; i < heart.length; i++) {
+//     heart[i].style.backgroundColor = "blue";
+// }
+heart.forEach(function (item , i, hearts) {
+    item.style.backgroundColor = "white";
+});
 
-for (let key in options) {
-    console.log("Свойство " + key + " имеет значение " + options[key]);
-}
-console.log(Object.keys(options).length);
+let div = document.createElement("div"),
+    text = document.createTextNode("Тут был я");
 
-// let arr = ["first", 2, 3, "four", 5];
+    div.classList.add("black");
+    // document.body.appendChild(div);
+    // wrapper.appendChild(div);
+    // div.innerHTML = "<h1>Hello World!</h1>";
+    div.textContent = "Hello World!";
+    document.body.insertBefore(div, circle[0]);
+    document.body.removeChild(circle[1]);
+    wrapper.removeChild(heart[1]);
 
-// // for (let i = 0; i < arr.length; i++) {
-// //     console.log(arr[i]);
-// // }
-// arr.forEach(function(item, i, data) {
-//     console.log(i + ": " + item + " (массив: " + data + ")");
-// });
+    document.body.replaceChild(btn[1], circle[1]);
 
-// console.log(arr);
-
-// let data = [1, 3, 4, 6, 7];
-
-// for ( let key of data) {
-//     console.log(key);
-// // }
-// let ans = prompt(""),
-//     arr = [];
-
-// arr = ans.split(",");
-// console.log(arr);
-
-// let arr = ["asdas", "dasdasd", "asd"],
-//     i = arr.join(", ");
-// console.log(i);
-
-let arr = [1, 15, 4],
-    i = arr.sort(compareNum);
-
-function compareNum(a, b ) {
-    return a-b;
-}
-console.log(arr);
-
-let soldier = {
-    health: 400,
-    armor: 200
-};
-
-let john = {
-    health: 100
-};
-
-john.__proto__ = soldier;
-console.log(john);
-console.log(john.armor);
+console.log(div);

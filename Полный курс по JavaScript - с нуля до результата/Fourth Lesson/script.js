@@ -11,11 +11,6 @@ function start() {
     }
     
 }
-
-function showAppData() {
-    
-}
-
 start();
 
 var appData = {
