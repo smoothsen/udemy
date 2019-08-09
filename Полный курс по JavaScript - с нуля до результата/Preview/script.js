@@ -1,36 +1,15 @@
-let box = document.getElementById("box"),
-    btn = document.getElementsByTagName("button"),
-    circle = document.getElementsByClassName("circle"),
-    heart = document.querySelectorAll(".heart"),
-    oneHeart = document.querySelector(".heart"),
-    wrapper = document.querySelector(".wrapper");
+// let timerId = setTimeout(sayHello, 3000);
+// clearTimeout(timerId);
 
-box.style.backgroundColor = "blue";
-btn[1].style.borderRadius = "100%";
+// let timerId = setInterval(sayHello, 3000);
+// clearTimeout(timerId);
 
-circle[0].style.backgroundColor = "red";
-circle[1].style.backgroundColor = "yellow";
-circle[2].style.backgroundColor = "green";
-
-// for(let i = 0; i < heart.length; i++) {
-//     heart[i].style.backgroundColor = "blue";
+// function sayHello() {
+//     console.log("Hello World!");
 // }
-heart.forEach(function (item , i, hearts) {
-    item.style.backgroundColor = "white";
-});
 
-let div = document.createElement("div"),
-    text = document.createTextNode("Тут был я");
+// let timerId = setTimeout(function log() {
+//     console.log("Hello");
+//     setTimeout(log, 2000);
+// });
 
-    div.classList.add("black");
-    // document.body.appendChild(div);
-    // wrapper.appendChild(div);
-    // div.innerHTML = "<h1>Hello World!</h1>";
-    div.textContent = "Hello World!";
-    document.body.insertBefore(div, circle[0]);
-    document.body.removeChild(circle[1]);
-    wrapper.removeChild(heart[1]);
-
-    document.body.replaceChild(btn[1], circle[1]);
-
-console.log(div);
