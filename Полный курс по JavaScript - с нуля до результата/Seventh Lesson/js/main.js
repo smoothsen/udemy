@@ -23,7 +23,7 @@ let startCalc = document.getElementById("start"),
     yearValue = document.querySelector(".year-value"),
     monthValue = document.querySelector(".month-value"),
     dayValue = document.querySelector(".day-value");
-var money, time;
+var money, time, totalSum;
 
 function enableView(x) {
     btnAcceptExpenses.disabled = x;
@@ -71,14 +71,12 @@ btnAcceptOptionalExpenses.addEventListener("click", function() {
         let opt = optionalExpensesItem[i].value;
         appData.optionalExpenses[i] = opt;
         optionalExpensesValue.textContent += appData.optionalExpenses[i] + " ";
-        console.log(optionalExpensesItem[i]);
-        console.log(optionalExpensesValue.value, opt);
     }
 });
 
 btnCalc.addEventListener("click", function() {
     if(appData.budget != undefined) {
-        appData.moneyPerDay = (appData.budget/30).toFixed();
+        appData.moneyPerDay = ((appData.budget-expensesValue.textContent)/30).toFixed();
         dayBudgetValue.textContent = appData.moneyPerDay;
 
         if(appData.moneyPerDay < 100) {
