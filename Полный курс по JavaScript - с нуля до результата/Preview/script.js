@@ -1,56 +1,27 @@
-let name = "Ivan",
-    age = 30,
-    mail = "ex@mail.ru";
-
-document.write(`Пользователь ${name} ${age} лет. Его почтовый адрес: ${mail}`);
-
-let fun = () => {
-    console.log(this);
-};
-fun();
-
-let obj = {
-    number: 5,
-    sayNumber: function () {
-        let say = () => {
-            console.log(this);
-        };
-        say();
-    }
-};
-obj.sayNumber();
-
-function calcOrDouble(number, basis = 2) {
-    // basis = basis || 2; ES5
-    console.log(number*basis);
-}
-calcOrDouble(3, 5);
-calcOrDouble(6);
-
-class Rectangle {
-    constructor(height, width) {
+class Options {
+    constructor(height, width, bg, fontSize, textAlign) {
         this.height = height;
         this.width = width;
+        this.bg = bg;
+        this.fontSize = fontSize;
+        this.textAlign = textAlign;
+
     }
-    calcArea() {
-        return this.height * this.width;
+    createDiv(str) {
+        let element = document.createElement("div");
+        console.log(element);
+        element.innerHTML = str;
+        document.body.append(element);
+
+        element.style.cssText = `
+            height: ${this.height};
+            width: ${this.width};
+            background: ${this.bg};
+            font-size: ${this.fontSize};
+            text-align: ${this.textAlign};
+        `;
     }
 }
+const option = new Options("100px", "1000px", "yellow", "80px", "center");
+let el = option.createDiv("Чёткая надпись!!!");
 
-const square = new Rectangle(10, 10);
-
-console.log(square.calcArea());
-
-let video = ["youtube", "vimeo", "rutube"],
-    blogs = ["wordpress", "livejournal", "blogger"],
-    intenet = [...video, ...blogs, "vk", "facebook"];
-
-console.log(intenet);
-
-function log (a, b, c) {
-    console.log(a);
-    console.log(b);
-    console.log(c);
-}
-let numbers = [2, 5, 7];
-log(...numbers);
