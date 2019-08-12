@@ -1,27 +1,32 @@
-class Options {
-    constructor(height, width, bg, fontSize, textAlign) {
-        this.height = height;
-        this.width = width;
-        this.bg = bg;
-        this.fontSize = fontSize;
-        this.textAlign = textAlign;
+// let options = {
+//     width: 1366,
+//     height: 768,
+//     background: "red",
+//     font: {
+//         size: "16px",
+//         color: "#fff"
+//     }
+// };
 
-    }
-    createDiv(str) {
-        let element = document.createElement("div");
-        console.log(element);
-        element.innerHTML = str;
-        document.body.append(element);
+// console.log(JSON.parse(JSON.stringify(options)));
 
-        element.style.cssText = `
-            height: ${this.height};
-            width: ${this.width};
-            background: ${this.bg};
-            font-size: ${this.fontSize};
-            text-align: ${this.textAlign};
-        `;
-    }
-}
-const option = new Options("100px", "1000px", "yellow", "80px", "center");
-let el = option.createDiv("Чёткая надпись!!!");
+let inputRub = document.getElementById("rub"),
+    inputUsd = document.getElementById("usd");
 
+inputRub.addEventListener("input", () => {
+    let request = new XMLHttpRequest();
+
+    // request.open(method, url, async, login, pass);
+    request.open("GET", "current.json");
+    request.setRequestHeader("Content-type", "application/json; charset=utf-8");
+    request.send();
+
+    request.addEventListener("readystatechange", function () {
+        if (request.readyState === 4 && request.status == 200) {
+            let data = JSON.parse(request.response);
+            inputUsd,value = inputRub / data.usd;
+        } else {
+            inputUsd.value = "Что-то пошло не так!"; 
+        }
+    });
+});
