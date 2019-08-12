@@ -1,15 +1,5 @@
-// let timerId = setTimeout(sayHello, 3000);
-// clearTimeout(timerId);
-
-// let timerId = setInterval(sayHello, 3000);
-// clearTimeout(timerId);
-
-// function sayHello() {
-//     console.log("Hello World!");
-// }
-
-// let timerId = setTimeout(function log() {
-//     console.log("Hello");
-//     setTimeout(log, 2000);
-// });
-
+let age = document.getElementById('age');
+function showUser(surname, name) {
+	alert("Пользователь " + surname + " " + name + ", его возраст " + this.value);
+}
+showUser.apply(age, ["Панов","Владимир"]);

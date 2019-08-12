@@ -4,7 +4,10 @@ window.addEventListener("DOMContentLoaded", function() {
     
     let tab = document.querySelectorAll(".info-header-tab"),
         info = document.querySelector(".info-header"),
-        tabContent = document.querySelectorAll(".info-tabcontent");
+        tabContent = document.querySelectorAll(".info-tabcontent"),
+        more = document.querySelector(".more"),
+        buttons = document.querySelectorAll(".description-btn");
+    
     
     function hideTabContent(a) {
         for (let i = a; i < tabContent.length; i++) {
@@ -86,4 +89,35 @@ window.addEventListener("DOMContentLoaded", function() {
         }
     }
     setClock("timer", deadLine);
+
+    //Modal
+
+    function viewModal (moreButton) {        
+        let overlay = document.querySelector(".overlay"),
+            close = document.querySelector(".popup-close");
+    
+        moreButton.addEventListener("click", function () {
+            overlay.style.display = "block";
+            this.classList.add("more-splash");
+            document.body.style.overflow = "hidden";
+        });
+
+        close.addEventListener("click", function () {
+            overlay.style.display = "none";
+            moreButton.classList.remove("more-splash");  
+            document.body.style.overflow = "";  
+        });
+    }
+    viewModal(more);   
+    buttons.forEach(element => {
+        viewModal(element);
+    });     
 });
+
+// <input id="age" value="30">
+
+// let age = document.getElementById('age');
+// function showUser(surname, name) {
+// 	alert("Пользователь " + surname + " " + name + ", его возраст " + this.value);
+// }
+// showUser.apply(age, ["Панов","Владимир"]);
