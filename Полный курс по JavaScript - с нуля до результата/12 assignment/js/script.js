@@ -110,7 +110,7 @@ window.addEventListener("DOMContentLoaded", function() {
     viewModal(more);   
     buttons.forEach(element => {
         viewModal(element);
-    });     
+    });
 });
 
 //----------------------------------11----------------------------------
