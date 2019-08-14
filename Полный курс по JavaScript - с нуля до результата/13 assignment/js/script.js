@@ -38,7 +38,11 @@ window.addEventListener("DOMContentLoaded", function() {
     });
     // Time
 
+<<<<<<< HEAD
     let deadLine = "2019-08-13";
+=======
+    let deadLine = "2019-08-14";
+>>>>>>> f8de0dd17be0e67ca6f357f89735cfce637f4b1c
 
     function getTimeRemaning(endTime) {
         let t = Date.parse(endTime) - Date.parse(new Date()),
@@ -110,6 +114,7 @@ window.addEventListener("DOMContentLoaded", function() {
     viewModal(more);   
     buttons.forEach(element => {
         viewModal(element);
+<<<<<<< HEAD
     }); 
     
     // Form
@@ -117,19 +122,40 @@ window.addEventListener("DOMContentLoaded", function() {
         loading: "Загрузка...",
         success: "Спасибо! Скоро мы с вами свяжемся!",
         failure: "Что-то пошло не так..."
+=======
+    });
+    
+    // Form
+
+    let message = {
+        loading: "Загрузка...",
+        success: "Thank you! We connect with you soon!",
+        failure: "Oops? something go wrong..."
+>>>>>>> f8de0dd17be0e67ca6f357f89735cfce637f4b1c
     };
 
     let form = document.querySelector(".main-form"),
         input = form.getElementsByTagName("input"),
+<<<<<<< HEAD
         statusMessage = document.createElement("div");
 
         statusMessage.classList.add("status");
 
     form.addEventListener("submit", function (event) {
+=======
+        statusMessage = document.createElement("div"),
+        contact = document.getElementById("form"),
+        btnContact = contact.getElementsByTagName("button");
+        
+        statusMessage.classList.add("status");
+    
+    form.addEventListener("submit", function(event) {
+>>>>>>> f8de0dd17be0e67ca6f357f89735cfce637f4b1c
         event.preventDefault();
         form.appendChild(statusMessage);
 
         let request = new XMLHttpRequest();
+<<<<<<< HEAD
     });
 });
 
@@ -173,3 +199,64 @@ window.addEventListener("DOMContentLoaded", function() {
 // const option = new Options("100px", "1000px", "yellow", "80px", "center");
 // let el = option.createDiv("Чёткая надпись!!!");
 
+=======
+        request.open("POST", "server.php");
+        request.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+    
+        let formData = new FormData(form);
+        let obj = {};
+        formData.forEach(function(value, key) {
+            obj[key] = value;
+        });
+        let json = JSON.stringify(obj);
+
+        request.send(json);
+
+        request.addEventListener("readystatechange", function () {
+            if (request.readyState < 4) {
+                statusMessage.innerHTML = message.loading;
+            } else if (request.readyState === 4 && request.status == 200) {
+                statusMessage.innerHTML = message.success;                
+            } else {
+                statusMessage.innerHTML = message.failure;
+            }
+        });
+
+        for(let i = 0; i < input.length; i++) {
+            input[i].value = "";
+        }
+    });
+
+    contact.addEventListener("submit", function(event) {
+        event.preventDefault();
+        contact.appendChild(statusMessage);
+
+        let request = new XMLHttpRequest();
+        request.open("POST", "server.php");
+        request.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+    
+        let formData = new FormData(contact);
+        let obj = {};
+        formData.forEach(function(value, key) {
+            obj[key] = value;
+        });
+        let json = JSON.stringify(obj);
+
+        request.send(json);
+
+        request.addEventListener("readystatechange", function () {
+            if (request.readyState < 4) {
+                statusMessage.innerHTML = message.loading;
+            } else if (request.readyState === 4 && request.status == 200) {
+                statusMessage.innerHTML = message.success;                
+            } else {
+                statusMessage.innerHTML = message.failure;
+            }
+        });
+
+        for(let i = 0; i < btnContact.length; i++) {
+            btnContact[i].value = "";
+        } 
+    });
+});
+>>>>>>> f8de0dd17be0e67ca6f357f89735cfce637f4b1c
