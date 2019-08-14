@@ -270,7 +270,13 @@ window.addEventListener("DOMContentLoaded", function() {
 
     persons.addEventListener("change", function () {
         personsSum = +this.value;
-        total = (daysSum + personsSum) * 4000;
+        if ( personsSum == 0 ) {
+            total = 0;
+        } else if ( daysSum == 0 ) {
+            total = 0;
+        } else {
+            total = (daysSum + personsSum) * 4000;
+        }
 
         if (restDays.value == "") {
             totalValue.innerHTML = 0;
@@ -281,7 +287,14 @@ window.addEventListener("DOMContentLoaded", function() {
 
     restDays.addEventListener("change", function () {
         daysSum = +this.value;
-        total = (daysSum + personsSum) * 4000;
+        if ( daysSum == 0 ) {
+            total = 0;
+        } else if ( personsSum == 0 ) {
+            total = 0;
+        } 
+        else {
+            total = (daysSum + personsSum) * 4000;
+        }
 
         if (persons.value == "") {
             totalValue.innerHTML = 0;
